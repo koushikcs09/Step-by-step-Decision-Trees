@@ -90,6 +90,7 @@ In this simulation, only use the sex, fbs (fasting blood sugar), exang (exercise
 ![Image for post](https://miro.medium.com/max/1025/1*uitcZpl9-DCOAdcI5kzQDw.png)
 
 **Measure Gini Impurity in Exang (exercise induced angina)**
+
 ![Image for post](https://miro.medium.com/max/523/1*uv5yAlR-7zjpCdj3d1iNjA.png)
 
 ![Image for post](https://miro.medium.com/max/811/1*ErP1iQA29UeKEYtqGY_5dA.png)
@@ -298,6 +299,7 @@ We need calculate entropy in Target attribute first
 ![Image for post](https://miro.medium.com/max/700/1*KFgTicw0qBw60p1juuaRzQ.png)
 
 **How to measure Entropy in Sex attribute**
+
 ![Image for post](https://miro.medium.com/max/523/1*2ndE048b-mZsOW7jGhQm2w.png)
 
 Entropy — Sex = 0
