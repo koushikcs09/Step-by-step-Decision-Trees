@@ -57,7 +57,8 @@ As we can see, the information gain is simply the difference between the impurit
 ![Image for post](https://miro.medium.com/max/652/1*R_GDx8NhSZ_p27EN8Wh6EQ.png)
 
 impurity measure implements binary decisions trees and the three impurity measures or splitting criteria that are commonly used in binary decision trees are  _Gini impurity (IG)_,  _entropy (IH)_, and _misclassification error (IE)_.
-## **5.1 Gini Impurity** (_Step by Step  CART work in Classification_)
+## **5.1 Gini Impurity** 
+## **5.1.1 _Step by Step  CART work in Classification_**
 _Used by the CART (classification and regression tree) algorithm for classification trees_, _Gini impurity is a measure of how often a randomly chosen element from the set would be incorrectly labeled if it was randomly labeled according to the distribution of labels in the subset._
 Mathematically, we can write Gini Impurity as following
 ![Image for post](https://miro.medium.com/max/354/1*V5NKEredkTuDnoQPyjmyOw.png)
@@ -124,7 +125,7 @@ Do the same thing on the right branch, so the end result of a tree in this case 
 > 3. If separating the data result in an improvement, than pick the separation with the lowest impurity score
 # Bonus
 
-## **How to calculate Gini Impurity in continuous data?**
+## **5.1.1.1 How to calculate Gini Impurity in continuous data?**
 
 such as weight which is one of the attributes to determine heart disease, for example we have weight attribute
 ![Image for post](https://miro.medium.com/max/321/0*zG_vM-YBOzP_Fcm6)
@@ -140,7 +141,7 @@ such as weight which is one of the attributes to determine heart disease, for ex
 
 The lowest Gini Impurity is  **Weight < 205,** this is the cutoff and impurity value if used when we compare with another attribute
 
-## **How to calculate Gini Impurity in categorical data?**
+## **5.1.1.2How to calculate Gini Impurity in categorical data?**
 
 we have a favorite color attribute to determine a person’s gender
 ![Image for post](https://miro.medium.com/max/300/0*EiA4It23nkFcq-aS)
@@ -149,24 +150,7 @@ In order to know Gini Impurity this attribute, calculate an impurity score for e
 ![Image for post](https://miro.medium.com/max/886/0*l3nAu8xRF4qmcGuh)
 
 Now, we have possible combination and we find out the lowest Gini Impurity to determine cutoff and impurity value
-## **CART Work in Regression with one predictor**
-CART in classification cases uses Gini Impurity in the process of splitting the dataset into a decision tree. On the other hand CART in regression cases uses least squares, intuitively splits are chosen to minimize the  **residual sum of squares** between the observation and the mean in each node. Mathematically, we can write residual as follow
-![Image for post](https://miro.medium.com/max/226/1*dfRaEKhUfa0NonQwZbS4DQ.png)
-
-Mathematically, we can write  **RSS (residual sum of squares)** as follow
-![Image for post](https://miro.medium.com/max/360/1*VJd4g9In8DTnOuV49QJ2yg.png)
-
-## **In order to find out the “best” split, we must minimize the RSS**
-
-## **Intuition**
-
-This simulation uses a “dummy” dataset  as follow
-![Image for post](https://miro.medium.com/max/1001/1*HsDCChP7tw-V9fA1CpqyHg.png)
-
-The decision tree as follow
-![Image for post](https://miro.medium.com/max/1362/1*7AY2-g45h8eh6p2b-bU3Rg.png)
-
-## **2.2 How does CART process the splitting of the dataset (predictor =1)**
+## **5.1.2 CART Work in Regression with one predictor**
 CART in classification cases uses Gini Impurity in the process of splitting the dataset into a decision tree. On the other hand CART in regression cases uses least squares, intuitively splits are chosen to minimize the  **residual sum of squares** between the observation and the mean in each node. Mathematically, we can write residual as follow
 ![Image for post](https://miro.medium.com/max/226/1*dfRaEKhUfa0NonQwZbS4DQ.png)
 
@@ -183,7 +167,24 @@ This simulation uses a “dummy” dataset  as follow
 The decision tree as follow
 ![Image for post](https://miro.medium.com/max/1362/1*7AY2-g45h8eh6p2b-bU3Rg.png)
 
-## **5.1.2.2 How does CART process the splitting of the dataset (predictor =1)**
+## **How does CART process the splitting of the dataset (predictor =1)**
+CART in classification cases uses Gini Impurity in the process of splitting the dataset into a decision tree. On the other hand CART in regression cases uses least squares, intuitively splits are chosen to minimize the  **residual sum of squares** between the observation and the mean in each node. Mathematically, we can write residual as follow
+![Image for post](https://miro.medium.com/max/226/1*dfRaEKhUfa0NonQwZbS4DQ.png)
+
+Mathematically, we can write  **RSS (residual sum of squares)** as follow
+![Image for post](https://miro.medium.com/max/360/1*VJd4g9In8DTnOuV49QJ2yg.png)
+
+## **In order to find out the “best” split, we must minimize the RSS**
+
+## **5.1.2.2 Intuition**
+
+This simulation uses a “dummy” dataset  as follow
+![Image for post](https://miro.medium.com/max/1001/1*HsDCChP7tw-V9fA1CpqyHg.png)
+
+The decision tree as follow
+![Image for post](https://miro.medium.com/max/1362/1*7AY2-g45h8eh6p2b-bU3Rg.png)
+
+## **5.1.3 How does CART process the splitting of the dataset (predictor =1)**
 As mentioned before,  **In order to find out the “best” split, we must minimize the RSS.** first, we calculate  **RSS**  by split into two regions, start with index 0
 
 **Start within index 0**
@@ -222,6 +223,24 @@ calculate RSS in R1, the process in this section is the same as the previous pro
 ![Image for post](https://miro.medium.com/max/1477/1*dGJQ4TR3VcrP1WE-yD21xg.png)
 
 Do the same thing on the right branch, so the end result of a tree in this case is
+
+## **5.1.4 How does CART process the splitting of the dataset (predictor > 1)**
+
+This simulation uses a  **dummy data** as following
+![Image for post](https://miro.medium.com/max/315/1*PK4-6diJoEvBEEw2LBLeYw.png)
+
+Find out the minimum RSS each predictor
+
+**Price with RSS = 3873.79**
+![Image for post](https://miro.medium.com/max/1286/1*IsuxU0Rq-lwlrxPVFWZLjw.png)
+
+**Cleaning fee with RSS = 64214.8**
+![Image for post](https://miro.medium.com/max/1286/1*Zyhe1i-Cgoxggtvebn2HqA.png)
+
+There is only one threshold in License, 1 or 0. So we use that threshold to calculate RSS.  **License with RSS = 11658.5**
+![Image for post](https://miro.medium.com/max/1281/1*RvqsbVz6arOvScn9bi2z7A.png)
+
+**We already have RSS every predictor, compare RSS for each predictor, and find the lowest RSS value. If we analyze, License has the lowest value so it becomes root.**
 
 ## **5.2 Entropy**
 
