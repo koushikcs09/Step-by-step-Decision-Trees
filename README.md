@@ -66,17 +66,23 @@ Mathematically, we can write Gini Impurity as following
 where  _j_ is the number of classes present in the node and  _p_ is the distribution of the class in the node.
 
 Simple simulation with  [Heart Disease Data set](https://archive.ics.uci.edu/ml/datasets/Heart+Disease)  with 303 rows and has 13 attributes. Target consist 138 value 0 and 165 value 1
+
 ![Image for post](https://miro.medium.com/max/505/0*UxGWvrRifh3dqWOQ)
+
 In order to build a decision tree from the dataset and to determine which separation is best, we need a way to measure and compare Gini Impurity in each attribute. The lowest Gini Impurity value on the first iteration will be the Root Node. we can write equation 3 as :
+
 ![Image for post](https://miro.medium.com/max/795/1*mRptCs22opsiVSglWd5yGg.png)
+
 In this simulation, only use the sex, fbs (fasting blood sugar), exang (exercise induced angina), and target attributes.
 
 **Measure Gini Impurity in Sex**
+
 ![Image for post](https://miro.medium.com/max/523/1*GOdkYC7ahc7OvXoGS4PBBw.png)
 
 ![Image for post](https://miro.medium.com/max/982/1*weJz1ySCM1zCdUXXhnDnfQ.png)
 
 **Measure Gini Impurity in Fbs (fasting blood sugar)**
+
 ![Image for post](https://miro.medium.com/max/523/1*maoBf7OGfIdz-M_6tocROw.png)
 
 ![Image for post](https://miro.medium.com/max/60/1*uitcZpl9-DCOAdcI5kzQDw.png?q=20)
@@ -86,21 +92,24 @@ In this simulation, only use the sex, fbs (fasting blood sugar), exang (exercise
 **Measure Gini Impurity in Exang (exercise induced angina)**
 ![Image for post](https://miro.medium.com/max/523/1*uv5yAlR-7zjpCdj3d1iNjA.png)
 
-![Image for post](https://miro.medium.com/max/60/1*ErP1iQA29UeKEYtqGY_5dA.png?q=20)
-
 ![Image for post](https://miro.medium.com/max/811/1*ErP1iQA29UeKEYtqGY_5dA.png)
 
 **Fbs (fasting blood sugar) has the lowest Gini Impurity, so well use it at the Root Node**
+
 As we know, we have Fbs as Root Node, when we divide all of the patients using Fbs (fasting blood sugar), we end up with “Impure” leaf nodes. Each leaf contained with and without heart disease.
+
 ![Image for post](https://miro.medium.com/max/654/0*WG30IbLeSBfqfo2H)
 
 we need to figure how well Sex and Exang separate these patient in left node of Fbs
+
 ![Image for post](https://miro.medium.com/max/921/0*qhDveP9TvqqCn_Uy)
 
 **Exang (exercise induced angina) has the lowest Gini Impurity, we will use it at this node to separate patients.**
+
 ![Image for post](https://miro.medium.com/max/366/0*4j3X8XYg7gdY50Ld)
 
-In the left node of Exang (exercise induced angina), how well it separate these 49 patients (24 with heart disease and 25 without heart disease. Since only the attribute sex is left, we put sex attribute in the left node of Exang
+In the left node of Exang (exercise induced angina), how well it separate these 49 patients (24 with heart disease and 25 without heart disease. Since only the attribute sex is left, we put sex attribute in the left node of Exang.
+
 ![Image for post](https://miro.medium.com/max/1197/0*CqUhQD6zzZgBg1bS)
 
 As we can see, we have final leaf nodes on this branch, but why is the leaf node circled including the final node?
@@ -110,12 +119,15 @@ Note : the leaf node circled, 89% don’t have heart diseases
 Do these new leaves separate patients better than what we had before ?
 
 In order to answer those question, we must compare Gini Impurity using attribute sex and Gini Impurity before using attribute sex to separate patients.
+
 ![Image for post](https://miro.medium.com/max/1242/0*0Fut-9j0qxgXShRa)
 
 The Gini Impurity before using sex to separate patients is lowest, so we don’t separate this node using Sex. The final leaf node on this branch of tree
+
 ![Image for post](https://miro.medium.com/max/457/0*ttXZLxx9OC75BAc8)
 
 Do the same thing on the right branch, so the end result of a tree in this case is
+
 ![Image for post](https://miro.medium.com/max/830/0*HPE2L-ik2iHKsoNJ)
 
 **Main point when process the splitting of the dataset**
@@ -123,20 +135,25 @@ Do the same thing on the right branch, so the end result of a tree in this case 
 > 1. calculate all of the Gini impurity score
 > 2. compare the Gini impurity score, after n before using new attribute to separate data. If the node itself has the lowest score, than there is no point in separating the data
 > 3. If separating the data result in an improvement, than pick the separation with the lowest impurity score
+> 
 # Bonus
 
 ## **5.1.1.1 How to calculate Gini Impurity in continuous data?**
 
 such as weight which is one of the attributes to determine heart disease, for example we have weight attribute
+
 ![Image for post](https://miro.medium.com/max/321/0*zG_vM-YBOzP_Fcm6)
 
 **Step 1 : Order data by ascending**
+
 ![Image for post](https://miro.medium.com/max/375/0*cUK8HXBDgD0TovYN)
 
 **Step 2 : Calculate the average weight**
+
 ![Image for post](https://miro.medium.com/max/561/0*UDVMwgSRWS4gwl7q)
 
 **Step 3 : Calculate Gini Impurity values for each average weight**
+
 ![Image for post](https://miro.medium.com/max/1600/0*9n29hkwLQyOeg9OT)
 
 The lowest Gini Impurity is  **Weight < 205,** this is the cutoff and impurity value if used when we compare with another attribute
@@ -144,17 +161,23 @@ The lowest Gini Impurity is  **Weight < 205,** this is the cutoff and impurity v
 ## **5.1.1.2How to calculate Gini Impurity in categorical data?**
 
 we have a favorite color attribute to determine a person’s gender
+
 ![Image for post](https://miro.medium.com/max/300/0*EiA4It23nkFcq-aS)
 
 In order to know Gini Impurity this attribute, calculate an impurity score for each one as well as each possible combination
+
 ![Image for post](https://miro.medium.com/max/886/0*l3nAu8xRF4qmcGuh)
 
 Now, we have possible combination and we find out the lowest Gini Impurity to determine cutoff and impurity value
+
 ## **5.1.2 CART Work in Regression with one predictor**
+
 CART in classification cases uses Gini Impurity in the process of splitting the dataset into a decision tree. On the other hand CART in regression cases uses least squares, intuitively splits are chosen to minimize the  **residual sum of squares** between the observation and the mean in each node. Mathematically, we can write residual as follow
+
 ![Image for post](https://miro.medium.com/max/226/1*dfRaEKhUfa0NonQwZbS4DQ.png)
 
 Mathematically, we can write  **RSS (residual sum of squares)** as follow
+
 ![Image for post](https://miro.medium.com/max/360/1*VJd4g9In8DTnOuV49QJ2yg.png)
 
 ## **In order to find out the “best” split, we must minimize the RSS**
@@ -162,16 +185,21 @@ Mathematically, we can write  **RSS (residual sum of squares)** as follow
 ## **5.1.2.1 Intuition**
 
 This simulation uses a “dummy” dataset  as follow
+
 ![Image for post](https://miro.medium.com/max/1001/1*HsDCChP7tw-V9fA1CpqyHg.png)
 
 The decision tree as follow
+
 ![Image for post](https://miro.medium.com/max/1362/1*7AY2-g45h8eh6p2b-bU3Rg.png)
 
 ## **How does CART process the splitting of the dataset (predictor =1)**
+
 CART in classification cases uses Gini Impurity in the process of splitting the dataset into a decision tree. On the other hand CART in regression cases uses least squares, intuitively splits are chosen to minimize the  **residual sum of squares** between the observation and the mean in each node. Mathematically, we can write residual as follow
+
 ![Image for post](https://miro.medium.com/max/226/1*dfRaEKhUfa0NonQwZbS4DQ.png)
 
 Mathematically, we can write  **RSS (residual sum of squares)** as follow
+
 ![Image for post](https://miro.medium.com/max/360/1*VJd4g9In8DTnOuV49QJ2yg.png)
 
 ## **In order to find out the “best” split, we must minimize the RSS**
@@ -179,39 +207,49 @@ Mathematically, we can write  **RSS (residual sum of squares)** as follow
 ## **5.1.2.2 Intuition**
 
 This simulation uses a “dummy” dataset  as follow
+
 ![Image for post](https://miro.medium.com/max/1001/1*HsDCChP7tw-V9fA1CpqyHg.png)
 
 The decision tree as follow
+
 ![Image for post](https://miro.medium.com/max/1362/1*7AY2-g45h8eh6p2b-bU3Rg.png)
 
 ## **5.1.3 How does CART process the splitting of the dataset (predictor =1)**
+
 As mentioned before,  **In order to find out the “best” split, we must minimize the RSS.** first, we calculate  **RSS**  by split into two regions, start with index 0
 
 **Start within index 0**
+
 ![Image for post](https://miro.medium.com/max/1316/1*955o8f61OFgnlMZSTVsw-A.png)
 
 The data already split into two regions, we add up the squared residual for every index data. furthermore we calculate  **RSS**  each node using equation 2.0
+
 ![Image for post](https://miro.medium.com/max/1664/1*9CVl4sc9L95MHTt4uxlq0w.png)
 
 ## **Start within index 1**
 
 calculate  **RSS**  by split into two regions within index 1
+
 ![Image for post](https://miro.medium.com/max/1316/1*ca_81--21ZGPo6Lvonnwig.png)
 
 after the data is divided into two regions then calculate  **RSS**  each node using equation 2.0
+
 ![Image for post](https://miro.medium.com/max/1677/1*sZLI2-gmTzvR7sxAYMSOzg.png)
 
 ## Start within index 2
 
 calculate  **RSS**  by split into two regions within index 2
+
 ![Image for post](https://miro.medium.com/max/1216/1*LiVz3Bp8FrtPh36tVq45tA.png)
 
 calculate  **RSS**  each node
+
 ![Image for post](https://miro.medium.com/max/1591/1*38K1pGNnSBWF5RmUucIEXA.png)
 
 This process continues until the calculation of RSS in the last index
 
 **Last Index**
+
 ![Image for post](https://miro.medium.com/max/1286/1*IsuxU0Rq-lwlrxPVFWZLjw.png)
 
 Price with threshold 19 has a smallest RSS, in R1 there are 10 data within price < 19, so we’ll split the data in R1. In order to avoid overfitting, we define the minimum data for each region >= 6. If the region has less than 6 data, the split process in that region stops.
@@ -220,6 +258,7 @@ Split the data with threshold 19
 ![Image for post](https://miro.medium.com/max/899/1*Zf_LRyCbUskdLW5PEe23Ng.png)
 
 calculate RSS in R1, the process in this section is the same as the previous process, only done for R1
+
 ![Image for post](https://miro.medium.com/max/1477/1*dGJQ4TR3VcrP1WE-yD21xg.png)
 
 Do the same thing on the right branch, so the end result of a tree in this case is
@@ -227,6 +266,7 @@ Do the same thing on the right branch, so the end result of a tree in this case 
 ## **5.1.4 How does CART process the splitting of the dataset (predictor > 1)**
 
 This simulation uses a  **dummy data** as following
+
 ![Image for post](https://miro.medium.com/max/315/1*PK4-6diJoEvBEEw2LBLeYw.png)
 
 Find out the minimum RSS each predictor
@@ -238,6 +278,7 @@ Find out the minimum RSS each predictor
 ![Image for post](https://miro.medium.com/max/1286/1*Zyhe1i-Cgoxggtvebn2HqA.png)
 
 There is only one threshold in License, 1 or 0. So we use that threshold to calculate RSS.  **License with RSS = 11658.5**
+
 ![Image for post](https://miro.medium.com/max/1281/1*RvqsbVz6arOvScn9bi2z7A.png)
 
 **We already have RSS every predictor, compare RSS for each predictor, and find the lowest RSS value. If we analyze, License has the lowest value so it becomes root.**
@@ -245,6 +286,7 @@ There is only one threshold in License, 1 or 0. So we use that threshold to calc
 ## **5.2 Entropy**
 
 Used by the ID3, C4.5 and C5.0 tree-generation algorithms. Information gain is based on the concept of entropy, the entropy measure is defined as
+
 ![Image for post](https://miro.medium.com/max/315/1*coWr5c4M7IQVEo9OzJanvw.png)
 
 where  _j_ is the number of classes present in the node and  _p_ is the distribution of the class in the node.
@@ -252,47 +294,60 @@ where  _j_ is the number of classes present in the node and  _p_ is the distribu
 In the same case and same  [data set](https://archive.ics.uci.edu/ml/datasets/Heart+Disease), we need a way to measure and compare Entropy in each attribute. The highest Entropy value on the first iteration will be the Root Node.
 
 We need calculate entropy in Target attribute first
+
 ![Image for post](https://miro.medium.com/max/700/1*KFgTicw0qBw60p1juuaRzQ.png)
 
 **How to measure Entropy in Sex attribute**
 ![Image for post](https://miro.medium.com/max/523/1*2ndE048b-mZsOW7jGhQm2w.png)
 
 Entropy — Sex = 0
+
 ![Image for post](https://miro.medium.com/max/652/1*Jrc501ITDFcoQtrE533Pjw.png)
 
 Entropy — Sex = 1
+
 ![Image for post](https://miro.medium.com/max/617/1*hABWmggHDGxCYao19t_vDA.png)
 
 Now that we have measured the Entropy for both leaf nodes. We take the weight average again to calculate the total entropy value.
 
 Entropy — Sex
+
 ![Image for post](https://miro.medium.com/max/777/1*Kbv0juuzWksRIKBfNr2edQ.png)
 
 **How to measure Entropy in Fbs attribute**
+
 ![Image for post](https://miro.medium.com/max/523/1*nd8JBT_sNcRmfoPmE7qu2g.png)
 
 Entropy — Fbs = 0
+
 ![Image for post](https://miro.medium.com/max/659/1*nb1zrw6St72BWPgiV9Ir0w.png)
 
 Entropy — Fbs = 1
+
 ![Image for post](https://miro.medium.com/max/651/1*g7vBJnaaqH9eZlevjizY1Q.png)
 
 Entropy — Fbs
+
 ![Image for post](https://miro.medium.com/max/783/1*yy2UDKaOIkjYpSheeC5LtA.png)
 
 **How to measure Entropy in Exang attribute**
+
 ![Image for post](https://miro.medium.com/max/523/1*imlmEAq5Pff0TQwbT1qPEw.png)
 
 Entropy — Exang = 0
+
 ![Image for post](https://miro.medium.com/max/657/1*4aoH9A5C-slBy0dfyY8Nwg.png)
 
 Entropy — Exang = 1
+
 ![Image for post](https://miro.medium.com/max/679/1*igHmyuWwQzbB0k7ui8Vy9A.png)
 
 Entropy — Exang
+
 ![Image for post](https://miro.medium.com/max/831/1*1kFkZKlMtzjuI2m2XY0NQg.png)
 
 **Fbs (fasting blood sugar) has the highest gini impurity, so we will use it at the Root Node, Precisely the same results we got from Gini Impurity.**
+
 ## **5.3 Misclassification Impurity**
 
 Another impurity measure is the misclassification impurity , Mathematically, we can write misclassification impurity as following
@@ -315,7 +370,9 @@ It is an algorithm to find out the statistical significance between the differen
 1.  Calculate Chi-square for individual node by calculating the deviation for Success and Failure both
 2.  Calculated Chi-square of Split using Sum of all Chi-square of success and Failure of each node of the split
 
-**Example:**![Decision Tree, Algorithm, Gini Index](https://www.analyticsvidhya.com/wp-content/uploads/2015/01/Decision_Tree_Algorithm1.png)
+**Example:**
+
+![Decision Tree, Algorithm, Gini Index](https://www.analyticsvidhya.com/wp-content/uploads/2015/01/Decision_Tree_Algorithm1.png)
 **Split on Gender:**
 
 1.  First we are populating for node Female, Populate the actual value for “**Play Cricket”**  and **“Not Play Cricket”**, here these are 2 and 8 respectively.
@@ -325,9 +382,11 @@ It is an algorithm to find out the statistical significance between the differen
 5.  Follow similar steps for calculating Chi-square value for Male node.
 6.  Now add all Chi-square values to calculate Chi-square for split Gender.
 ![Decision Tree, Chi-Square](https://www.analyticsvidhya.com/wp-content/uploads/2015/01/Decision_Tree_Chi_Square1.png)
+
 **Split on Class:**
 
 Perform similar steps of calculation for split on Class and you will come up with below table.
 
 ![Decision Tree, Chi-Square](https://www.analyticsvidhya.com/wp-content/uploads/2015/01/Decision_Tree_Chi_Square_2.png)
+
 Above, you can see that Chi-square also identify the Gender split is more significant compare to Class.
