@@ -348,7 +348,7 @@ Entropy — Exang
 
 ![Image for post](https://miro.medium.com/max/831/1*1kFkZKlMtzjuI2m2XY0NQg.png)
 
-**Fbs (fasting blood sugar) has the highest gini impurity, so we will use it at the Root Node, Precisely the same results we got from Gini Impurity.**
+**Fbs (fasting blood sugar) has the highest entropy, so we will use it at the Root Node, Precisely the same results we got from Gini Impurity.**
 
 ## **5.3 Misclassification Impurity**
 
